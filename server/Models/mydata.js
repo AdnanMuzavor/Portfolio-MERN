@@ -10,6 +10,9 @@ const Mydata = new mongoose.Schema({
   },
   category:{
       type:String
+  },
+  cloudinary_id:{
+    type:String,
   }
 });
 
