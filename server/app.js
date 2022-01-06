@@ -12,10 +12,11 @@ dotenv.config({path:'./.env'})
 //Requiring routers
 const datarouter = require("./Router/postdatarouter");
 const contactrouter = require("./Router/contactrouter");
-
+const adminrouter=require("./Router/adminrouter")
 //Using this routers
 app.use("/api/mydata", datarouter);
 app.use("/api/contacts", contactrouter);
+app.use("/api/admin",adminrouter)
 
 
 const port =process.env.PORT || 5000;
