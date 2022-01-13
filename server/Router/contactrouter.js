@@ -30,10 +30,11 @@ contactrouter.post("/postmessage", async (req, res) => {
   try {
     //Destructuring body data
     const { name, email, message } = req.body;
+    console.log(name, email, message, req.body);
     if (!name || !email || !message) {
       return res.status(422).send({ Message: "All fields not filled" });
     }
-    res.json({ message: req.body });
+    //res.json({ message: req.body });
     const Newmessage = new Contact(req.body);
     const messagesent = await Newmessage.save();
     res.status(200).send(messagesent);

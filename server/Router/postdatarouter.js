@@ -16,21 +16,20 @@ const upload = require("../utils/multer");
 datarouter.post(
   "/postdata",
   authenticator,
-  upload.single("image"),
+
   async (req, res) => {
     try {
       //To upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
 
-      const { content, category } = req.body;
+      const { content, category, result } = req.body;
       if (!content || !category) {
         return res.status(422).send({ Error: "All fields not provided" });
       }
       const newpost = new PersonalData({
-        image: result.secure_url,
+        image: result.image,
         content: content,
         category: category,
-        cloudinary_id: result.public_id,
+        cloudinary_id: result.cloudinary_id,
       });
       const posteddata = await newpost.save();
       res.status(200).send(posteddata);
