@@ -34,10 +34,10 @@ adminrouter.post("/", async (req, res) => {
         console.log(token);
         res.status(200).send({ Message: "Verified User" });
       } else {
-        res.status(200).send({ Message: "Admin login Fail" });
+        res.status(400).send({ Message: "Admin login Fail" });
       }
     } else {
-      res.status(200).send({ Message: "Admin login Fail" });
+      res.status(400).send({ Message: "Admin login Fail" });
     }
   } catch (e) {
     console.log(e);
